@@ -30,8 +30,8 @@ export const redirectToURL = async (req, res) => {
       },
     }
   );
-  res.json(entry);
-  //   res.redirect(entry.redirectURL);
+  // res.json(entry);
+    res.redirect(entry.redirectURL);
 };
 
 export const getAnalytics = async (req, res) => {
