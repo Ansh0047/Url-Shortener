@@ -25,6 +25,7 @@ export default function App() {
 
       const id = data.id;
       setShortId(id);
+      setUrl('');
     } catch (error) {
       setError(data.error);
     }

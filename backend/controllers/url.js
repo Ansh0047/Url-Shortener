@@ -7,6 +7,12 @@ export const generateURL = async (req, res) => {
   const body = req.body;
   if (!body.url) return res.status(400).json({ error: "url is required" });
 
+  const pattern = /^https?:\/\//i;
+
+  if(!pattern.test(body.url)){
+    body.url = "https://" + body.url;
+  }
+
   await URL.create({
     shortId,
     redirectURL: body.url,
@@ -31,7 +37,8 @@ export const redirectToURL = async (req, res) => {
     }
   );
   // res.json(entry);
-    res.redirect(entry.redirectURL);
+  // console.log(entry);
+  res.redirect(entry.redirectURL);
 };
 
 export const getAnalytics = async (req, res) => {
